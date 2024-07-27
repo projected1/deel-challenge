@@ -1,4 +1,8 @@
-import { Profile, Contract, Job } from '../src/model.mjs';
+import {
+  Job,
+  Profile,
+  Contract,
+} from '../src/model/index.mjs';
 
 /* WARNING THIS WILL DROP THE CURRENT DATABASE */
 seed();

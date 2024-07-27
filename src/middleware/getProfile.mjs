@@ -1,12 +1,14 @@
+import { HttpCode } from '../config/constants.mjs';
+import { findOne } from '../repository/profileRepository.mjs';
 
-const getProfile = async (req, res, next) => {
-  const { Profile } = req.app.get('models');
-  const profile = await Profile.findOne({ where: { id: req.get('profile_id') || 0 } });
+async function getProfile(req, res, next) {
+  const profileId = req.get('profile_id');
+  const profile = await findOne(profileId);
   if (!profile) {
-    return res.status(401).end();
+    return res.status(HttpCode.HTTP_401).end();
   }
   req.profile = profile;
   next();
-};
+}
 
 export { getProfile };
