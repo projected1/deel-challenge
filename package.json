@@ -10,11 +10,16 @@
   },
   "scripts": {
     "start": "nodemon ./src/server.js",
-    "seed": "node ./scripts/seedDb.js"
+    "seed": "node ./scripts/seedDb.js",
+    "lint": "eslint --fix --ext .js,.mjs,.json ."
   },
   "devDependencies": {
-    "concurrently": "^8.0.1",
-    "nodemon": "^2.0.22"
+    "eslint": "^8.48.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-json": "^3.1.0",
+    "eslint-plugin-promise": "^7.0.0",
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.4"
   },
   "engines": {
     "node": ">=10.16.3"

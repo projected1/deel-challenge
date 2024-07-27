@@ -1,0 +1,94 @@
+env:
+  node: true
+  es2022: true
+  commonjs: true
+
+parserOptions:
+  sourceType: module
+
+extends:
+  # https://github.com/eslint/eslint/blob/master/conf/eslint-recommended.js
+  - eslint:recommended
+  # https://github.com/azeemba/eslint-plugin-json#individual-rules
+  - plugin:json/recommended
+  # https://github.com/eslint-community/eslint-plugin-promise#rules
+  - plugin:promise/recommended
+  # https://mysticatea.github.io/eslint-plugin-eslint-comments/rules/
+  - plugin:eslint-comments/recommended
+
+# https://eslint.org/docs/rules/
+rules:
+  array-bracket-spacing:
+    - error
+    - always
+  arrow-spacing: error
+  camelcase: error
+  comma-dangle:
+    - error
+    - always-multiline
+  curly: error
+  eol-last: error
+  eqeqeq: error
+  func-call-spacing: error
+  indent:
+    - error
+    - 2
+    - SwitchCase: 1
+  max-depth:
+    - error
+    - 3
+  max-len:
+    - error
+    - code: 100
+  max-nested-callbacks:
+    - error
+    - 3
+  max-statements-per-line:
+    - error
+    - max: 1
+  newline-per-chained-call:
+    - error
+    - ignoreChainWithDepth: 3
+  no-duplicate-imports: error
+  no-multi-assign: error
+  no-multiple-empty-lines:
+    - error
+    - max: 1
+      maxEOF: 0
+  no-nested-ternary: error
+  no-trailing-spaces: error
+  no-unneeded-ternary: error
+  no-useless-constructor: error
+  no-var: error
+  object-curly-spacing:
+    - error
+    - always
+  prefer-const: error
+  quotes:
+    - error
+    - single
+    - avoid-escape
+  semi: error
+  space-before-blocks: error
+  brace-style: error
+  keyword-spacing:
+    - error
+  space-before-function-paren:
+    - error
+    - named: never
+      anonymous: never
+      asyncArrow: always
+  spaced-comment:
+    - error
+    - always
+  strict:
+    - error
+    - safe
+  no-whitespace-before-property: error
+  arrow-parens:
+    - error
+    - as-needed
+
+  # plugin:eslint-comments
+  eslint-comments/no-use:
+    - error
