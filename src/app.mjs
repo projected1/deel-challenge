@@ -1,7 +1,8 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const { sequelize } = require('./model');
-const { getProfile } = require('./middleware/getProfile');
+import express from 'express';
+import bodyParser from 'body-parser';
+import { sequelize } from './model.mjs';
+import { getProfile } from './middleware/getProfile.mjs';
+
 const app = express();
 app.use(bodyParser.json());
 app.set('sequelize', sequelize);
@@ -20,4 +21,5 @@ app.get('/contracts/:id', getProfile, async (req, res) => {
   }
   res.json(contract);
 });
-module.exports = app;
+
+export default app;

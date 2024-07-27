@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+import Sequelize from 'sequelize';
 
 const sequelize = new Sequelize({
   dialect: 'sqlite',
@@ -82,7 +82,7 @@ Contract.belongsTo(Profile, { as: 'Client' });
 Contract.hasMany(Job);
 Job.belongsTo(Contract);
 
-module.exports = {
+export {
   sequelize,
   Profile,
   Contract,

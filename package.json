@@ -9,8 +9,8 @@
     "sqlite3": "^5.1.7"
   },
   "scripts": {
-    "start": "nodemon ./src/server.js",
-    "seed": "node ./scripts/seedDb.js",
+    "start": "nodemon ./src/server.mjs",
+    "seed": "node ./scripts/seedDb.mjs",
     "lint": "eslint --fix --ext .js,.mjs,.json ."
   },
   "devDependencies": {
@@ -22,7 +22,6 @@
     "nodemon": "^3.1.4"
   },
   "engines": {
-    "node": ">=10.16.3"
-  },
-  "engineStrict": true
+    "node": ">=14.0.0"
+  }
 }
