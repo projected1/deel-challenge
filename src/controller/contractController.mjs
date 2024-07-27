@@ -1,5 +1,5 @@
 import { HttpCode } from '../config/constants.mjs';
-import { getContract } from '../service/contractService.mjs';
+import { getContract, getContracts } from '../service/contractService.mjs';
 
 async function getContractById(req, res) {
   const { id: contractId } = req.params;
@@ -11,6 +11,14 @@ async function getContractById(req, res) {
     : res.status(HttpCode.HTTP_200).json(contract);
 }
 
+async function getAllContracts(req, res) {
+  const { id: profileId } = req.profile;
+
+  const contracts = await getContracts(profileId);
+  return res.status(HttpCode.HTTP_200).json(contracts);
+}
+
 export {
   getContractById,
+  getAllContracts,
 };

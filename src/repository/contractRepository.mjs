@@ -14,6 +14,22 @@ async function findOneByIdAndProfileId(contractId, profileId) {
   return contract;
 }
 
+async function findByProfileIdAndTerminatedFalse(profileId) {
+  const contracts = Contract.findAll({
+    where: {
+      status: {
+        [Op.ne]: 'terminated',
+      },
+      [Op.or]: [
+        { ClientId: profileId },
+        { ContractorId: profileId },
+      ],
+    },
+  });
+  return contracts;
+}
+
 export {
   findOneByIdAndProfileId,
+  findByProfileIdAndTerminatedFalse,
 };
