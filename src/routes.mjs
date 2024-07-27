@@ -4,7 +4,7 @@ import { getProfile } from './middleware/getProfile.mjs';
 import { makeDeposit } from './controller/balanceController.mjs';
 import { getUnpaidJobs, makeJobPayment } from './controller/jobController.mjs';
 import { getAllContracts, getContractById } from './controller/contractController.mjs';
-import { getBestProfession } from './controller/adminController.mjs';
+import { getBestProfession, getBestClients } from './controller/adminController.mjs';
 
 const routes = express.Router();
 
@@ -14,5 +14,6 @@ routes.post('/balances/deposit/:userId', getProfile, asyncHandler(makeDeposit));
 routes.get('/jobs/unpaid', getProfile, asyncHandler(getUnpaidJobs));
 routes.post('/jobs/:job_id/pay', getProfile, asyncHandler(makeJobPayment));
 routes.get('/admin/best-profession', asyncHandler(getBestProfession));
+routes.get('/admin/best-clients', asyncHandler(getBestClients));
 
 export default routes;

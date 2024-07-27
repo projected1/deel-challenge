@@ -1,4 +1,5 @@
 import {
+  findTopPayingClientsInDateRange,
   findTopEarningProfessionByDateRange,
 } from '../repository/adminRepository.mjs';
 
@@ -8,4 +9,13 @@ async function findBestProfession(startDate, endDate) {
   return profession;
 }
 
-export { findBestProfession };
+async function findBestClients(startDate, endDate, limit = 2) {
+  const clients =
+    await findTopPayingClientsInDateRange(startDate, endDate, limit);
+  return clients;
+}
+
+export {
+  findBestClients,
+  findBestProfession,
+};
