@@ -1,0 +1,153 @@
+openapi: 3.0.1
+info:
+  title: Deel API
+  version: 1.0.0
+servers:
+  - url: http://localhost:3001
+paths:
+  /contracts/{id}:
+    get:
+      summary: Get a specific contract by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: profile_id
+          in: header
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success
+        '404':
+          description: Not Found
+
+  /contracts:
+    get:
+      summary: List all contracts
+      parameters:
+        - name: profile_id
+          in: header
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success
+        '404':
+          description: Not Found
+
+  /balances/deposit/{id}:
+    post:
+      summary: Deposit amount to a balance
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: profile_id
+          in: header
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: string
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+
+  /jobs/unpaid:
+    get:
+      summary: Get unpaid jobs
+      parameters:
+        - name: profile_id
+          in: header
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success
+        '404':
+          description: Not Found
+
+  /jobs/{id}/pay:
+    post:
+      summary: Pay for a job
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: profile_id
+          in: header
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+
+  /admin/best-profession:
+    get:
+      summary: Get best profession statistics
+      parameters:
+        - name: start
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: end
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+
+  /admin/best-clients:
+    get:
+      summary: Get best clients statistics
+      parameters:
+        - name: start
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: end
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: limit
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
