@@ -15,6 +15,8 @@ extends:
   - plugin:promise/recommended
   # https://mysticatea.github.io/eslint-plugin-eslint-comments/rules/
   - plugin:eslint-comments/recommended
+  # https://github.com/lo1tuma/eslint-plugin-mocha/tree/master/docs/rules
+  - plugin:mocha/recommended
 
 # https://eslint.org/docs/rules/
 rules:
@@ -92,3 +94,17 @@ rules:
   # plugin:eslint-comments
   eslint-comments/no-use:
     - error
+
+overrides:
+  - files: test/**/*
+    env:
+      mocha: true
+    rules:
+      max-nested-callbacks:
+        - error
+        - 10
+
+      # plugin:mocha
+      mocha/no-mocha-arrows: off
+      mocha/no-skipped-tests: error
+      mocha/no-exclusive-tests: error
