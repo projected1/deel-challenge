@@ -60,18 +60,17 @@ describe('Profile Repository', () => {
   describe('findOneByJobIdAndTypeClient', () => {
     it('should find a client profile by job id', async () => {
       const mockProfile = { id: 1, type: 'client', firstName: 'John' };
+      const mockJob = { Contract: { Client: mockProfile } };
       const mockFindOne = async options => {
-        expect(options.where.type).to.equal('client');
+        expect(options.where.id).to.equal(1);
         expect(options.include.model.name).to.equal('Contract');
-        expect(options.include.include.model.name).to.equal('Job');
-        expect(options.include.include.where.id).to.equal(1);
-        return mockProfile;
+        expect(options.include.include.model.name).to.equal('Profile');
+        return mockJob;
       };
 
       const { findOneByJobIdAndTypeClient } = await esmock(
         '../../src/repository/profileRepository.mjs', {
-          '../../src/model/profileModel.mjs': { findOne: mockFindOne },
-          '../../src/config/enums.mjs': { ProfileTypes: { CLIENT: 'client' } },
+          '../../src/model/jobModel.mjs': { findOne: mockFindOne },
         });
 
       const result = await findOneByJobIdAndTypeClient(1);
@@ -83,8 +82,7 @@ describe('Profile Repository', () => {
 
       const { findOneByJobIdAndTypeClient } = await esmock(
         '../../src/repository/profileRepository.mjs', {
-          '../../src/model/profileModel.mjs': { findOne: mockFindOne },
-          '../../src/config/enums.mjs': { ProfileTypes: { CLIENT: 'client' } },
+          '../../src/model/jobModel.mjs': { findOne: mockFindOne },
         });
 
       const result = await findOneByJobIdAndTypeClient(999);
