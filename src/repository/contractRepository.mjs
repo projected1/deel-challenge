@@ -1,5 +1,6 @@
 import { Op } from 'sequelize';
 import Contract from '../model/contractModel.mjs';
+import { ContractStatuses } from '../config/enums.mjs';
 
 async function findOneByIdAndProfileId(contractId, profileId) {
   const contract = await Contract.findOne({
@@ -18,7 +19,7 @@ async function findByProfileIdAndTerminatedFalse(profileId) {
   const contracts = Contract.findAll({
     where: {
       status: {
-        [Op.ne]: 'terminated',
+        [Op.ne]: ContractStatuses.TERMINATED,
       },
       [Op.or]: [
         { ClientId: profileId },
