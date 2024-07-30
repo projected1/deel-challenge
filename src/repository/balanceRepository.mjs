@@ -4,7 +4,7 @@ import Contract from '../model/contractModel.mjs';
 import { ContractStatuses } from '../config/enums.mjs';
 
 async function sumPriceByContractStatusInProgress(profileId, transaction) {
-  const sum = Job.sum('price', {
+  const sum = await Job.sum('price', {
     include: {
       model: Contract,
       where: {
