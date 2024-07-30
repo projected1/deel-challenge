@@ -1,0 +1,45 @@
+# unit-tests
+
+- it should find the top earning profession
+- it should return default object if no result found
+- it should find top paying clients
+- it should return an empty array if no clients found
+- it should sum job prices for in-progress contracts
+- it should return null if no in-progress contracts found
+- it should increment balance and return new balance
+- it should find a contract by id and profile id
+- it should return null if no contract found
+- it should find all non-terminated contracts for a profile
+- it should return an empty array if no contracts found
+- it should save a job
+- it should find a job by id
+- it should return null if job not found
+- it should find in-progress jobs for a profile
+- it should return an empty array if no in-progress jobs found
+- it should save a profile
+- it should find a profile by id
+- it should return null if profile not found
+- it should return null if profile id is undefined
+- it should find a client profile by job id
+- it should return null if no client profile found for the job
+- it should return the best profession for given date range
+- it should return null if no profession found
+- it should return the best clients for given date range with default limit
+- it should return the best clients for given date range with custom limit
+- it should return an empty array if no clients found
+- it should successfully save a deposit when amount is within limit
+- it should throw InvalidInputError when deposit amount exceeds limit
+- it should rollback transaction on error
+- it should return a contract when found
+- it should return null when contract not found
+- it should return all non-terminated contracts for a profile
+- it should return an empty array when no contracts found
+- it should return unpaid jobs for a profile
+- it should successfully process a job payment
+- it should throw NotFoundError when job is not found
+- it should throw InvalidInputError when job is already paid
+- it should throw InvalidInputError when client has insufficient balance
+- it should rollback transaction on error
+- it should return a client profile when found
+- it should return null when client profile not found
+- it should call findOneByJobIdAndTypeClient with correct jobId
